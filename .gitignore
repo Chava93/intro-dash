@@ -1,0 +1,7 @@
+# IPython
+profile_default/
+# Jupyter Notebook
+.ipynb_checkpoints
+Ipython
+ipython_config.py
+intro-dash.slides.html
