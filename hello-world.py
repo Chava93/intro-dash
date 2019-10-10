@@ -18,17 +18,30 @@ fig = go.Figure(
 )
 
 app.layout = html.Div([
-    html.H1("Información financiera al instante"),
-    html.P("""
-    En esta aplicación creada por actuarios de la UMA podrás consultar información financiera
-    directo de Yahoo Finance y visualizarla al instante.
-    """),
-    html.Label("Escribe tu consulta:"),
+    html.Section([
+        html.Div([
+            html.Div([
+                html.H1("Información Financiera al instante.", className="title"),
+                html.H2("Una aplicación diseñada por actuarios de la UMA", className="subtitle")
+            ], className="container")
+        ],className="hero-body" )
+    ], className="hero is-info"),
     html.Br(),
-    dcc.Input(id="security"),
+    html.Div([
+        html.Div([
+            html.Div("""
+                En esta aplicación creada por actuarios de la UMA podrás consultar información financiera
+                directo de Yahoo Finance y visualizarla al instante.
+                """, className="notification")
+        ], className="column is-8 is-offset-2")
+    ], className="container"),
+    html.Div([
+        html.Label("Escribe tu consulta:", className="label"),
+        dcc.Input(id="security", className="input", value="aapl"),
+    ], className="column is-4 is-offset-2"),
     html.Br(),
-    dcc.Graph(figure=fig, id="plot_security")
-])
+    dcc.Graph(figure=fig, id="plot_security", config={"displayModeBar": False})
+], className="container main-container")
 
 @app.callback(
     Output("plot_security", "figure"),
